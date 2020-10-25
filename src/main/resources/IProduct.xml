@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.IProduct">
+
+
+    <select id="showProduct" resultType="com.demo.domain.Product">
+        select * from product join agency_product ap on product.product_name = ap.product_name
+        where ap.agency_account= #{account}
+    </select>
+
+    <select id="recommendProduct" resultType="com.demo.domain.Product">
+        select * from product where product_name not in(select product_name from user_product where user_account= #{account})
+    </select>
+
+    <select id="selectType" resultType="com.demo.domain.Product">
+        select * from product where product_type = #{classify}
+    </select>
+
+    <select id="findName" resultType="com.demo.domain.Product">
+        select * from product where product_name like concat(concat('%', #{keyword}), '%')
+    </select>
+
+    <update id="updateProduct">
+        update product set product_information = #{agency_information}
+        where product_name = #{product_name}
+    </update>
+
+</mapper>

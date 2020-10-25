@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.FinancialMapper">
+
+
+    <select id="selectFinancialUser" resultType="com.demo.domain.User">
+        select *
+        from financial_user join info on financial_user.user_account=info.account
+        where financial_user.financial_account=#{financial_account}
+    </select>
+    <select id="selectFinancialHospital" resultType="java.lang.String">
+    select hospital_name from hospital where financial_account=#{financial_account}
+    </select>
+</mapper>

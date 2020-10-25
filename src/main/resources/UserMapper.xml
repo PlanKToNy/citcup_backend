@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.UserMapper">
+
+    <insert id="insertUser" keyColumn="account">
+    insert into user(account,password)
+    values (#{account},#{password})
+    </insert>
+
+    <insert id="insertInfo" keyColumn="account">
+    insert into info(account,username)
+    values (#{account},#{username})
+    </insert>
+
+
+    <delete id="deleteUser" >
+    delete from user where account = #{account}
+    </delete>
+    <delete id="deleteInfo" >
+    delete from info where account = #{account}
+    </delete>
+
+
+
+    <update id="updateUser">
+    update user set
+    password = #{password}
+    where account = #{account}
+    </update>
+
+    <update id="updateInfo">
+        update info set
+    username = #{username},gender = #{gender},city = #{city}
+    where account = #{account}
+    </update>
+
+
+    <select id="selectUser" resultType="com.demo.domain.User">
+        select * from user where account =#{account}
+    </select>
+
+    <select id="selectInfo" resultType="com.demo.domain.User">
+        select * from info where account =#{account}
+    </select>
+    <!--    <select id="selectUser" resultType="com.demo.domain.User">-->
+<!--    select u.account,u.password,i.name,i.age-->
+<!--    from user as u,info as i-->
+<!--    where u.account=i.account and u.account = #{account}-->
+<!--    </select>-->
+
+</mapper>
