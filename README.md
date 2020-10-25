@@ -16,6 +16,9 @@
 ![financial_user](pix/table_financial_user.png)
 
 2.  下载该仓库，运行DemoTest.main测试
+
+3.新建表agency,product,agency_product,user_product
+
 #### 参与贡献
 
 1.  Fork 本仓库
